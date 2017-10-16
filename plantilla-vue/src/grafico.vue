@@ -1,10 +1,9 @@
 <template>
 <div >
-  <h1>hiuaciuanbiuw</h1>
-  <div class="chart">
-  </div>
+  <h1> Tendencia Semanal</h1>
+  <div class="chart"></div>
 
-  <h2>ehfeufhufhuehpico amo a mona</h2>
+  <h2> Los mas escuchados</h2>
 
 </div>
 

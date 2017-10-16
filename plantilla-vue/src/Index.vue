@@ -1,17 +1,30 @@
 <template>
+<body>
+
 <div class="center">
   <h2>{{title}}</h2>
-    <img class="logo-big" src="./img/vue-logo.png" />
-    <p>
-      Plantilla hecha con Vue.js y Webpack
-    </p>
+
+    <img class="w3-display-middle" src="./img/MusicTweet.png" />
+
+  
 </div>
+
+
+<div class="center">
+  <h3>
+  <br><br><br><br>
+          Tu música a un tweet ..
+        </h3>
+</div>
+</body>
+
+
 </template>
 <script>
 export default{
   data(){
     return{
-      title:'Index'
+      title:'MusicTweet'
     }
   },
   mounted:function(){

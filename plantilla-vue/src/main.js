@@ -6,6 +6,7 @@ import VueResource from 'vue-resource';
 require("./style.scss");
 import addUser from './addUser.vue';
 import grafico from './grafico.vue';
+import grafico2 from './grafico2.vue';
 
 
 
@@ -16,7 +17,8 @@ const routes = [
   { path: '/index', alias: '/', component: Index},
   { path:'/actors', component: Actors},
   { path: '/newActor', component: addUser },
-  { path: '/Graphic', component: grafico }
+  { path: '/Graphic', component: grafico },
+  { path: '/BarGraph', component: grafico2}
 ]
 
 // Create the router instance and pass the `routes` option
