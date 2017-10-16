@@ -6,6 +6,10 @@
 
 	<svg width="960" height="500"></svg>
 
+	<li v-for="u in data2">
+        <span>{{u.nombre}} {{u.comentariosPositivos}}</span>
+     </li>
+
 
 </div>
 
@@ -17,8 +21,7 @@ import * as d3 from 'd3';
 export default{
   data: function(){
     return {
-      data : [13,11,30,23,19,17,15,14,14,12],
-      data2 : [
+      data2 : [/*
       			{letter:'Adele', frequency: .33},			
       			{letter:'Bad Bunny', frequency: .12},		
       			{letter:'Coldplay', frequency: .13},			
@@ -31,7 +34,7 @@ export default{
       			{letter:'Journey', frequency: .32},			
       			{letter:'Kuday', frequency: .51},			
       			{letter:'Linkin Park', frequency: .35},			
-      			{letter:'Muse', frequency: .77}			
+      			{letter:'Muse', frequency: .77}*/			
       ],
       data3 : [
       		{date:'30-May-12', close: 23.33},			
@@ -71,9 +74,9 @@ export default{
 
 		
 
-		  x.domain(data.map(function(d) { return d.letter; }));
+		  x.domain(data.map(function(d) { return d.nombre; }));
 		  //y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-		  y.domain([0, 1]); // eje y en rangos de 0% hasta el 100%
+		  y.comentariosPositivos; // eje y en rangos de 0% hasta el 100%
 
 		  g.append("g")
 		      .attr("class", "axis axis--x")
@@ -94,19 +97,29 @@ export default{
 		    .data(data)
 		    .enter().append("rect")
 		      .attr("class", "bar")
-		      .attr("x", function(d) { return x(d.letter); })
-		      .attr("y", function(d) { return y(d.frequency); })
+		      .attr("x", function(d) { return x(d.nombre); })
+		      .attr("y", function(d) { return y(d.comentariosPositivos); })
 		      .attr("width", x.bandwidth())
-		      .attr("height", function(d) { return height + - y(d.frequency); });
+		      .attr("height", function(d) { return height + - y(d.comentariosPositivos); });
 		
     }
 
   },
   mounted:function(){
+    console.log('grafico2.vue');
+    // GET /someUrl
+    this.$http.get('http://localhost:2323/backend-tbd/artistas')
+    .then(response=>{
+       // get body data
+      this.data2 = response.body;
+     console.log('data2',this.data2)
+    }, response=>{
+       // error callback
+       console.log('error cargando lista');
+    })
    
-     this.loadGraph(this.data2);
-
-  }
+    this.loadGraph(this.data2);
+  }	
 }
 </script>
 <style> 
