@@ -21,21 +21,7 @@ import * as d3 from 'd3';
 export default{
   data: function(){
     return {
-      data2 : [/*
-      			{letter:'Adele', frequency: .33},			
-      			{letter:'Bad Bunny', frequency: .12},		
-      			{letter:'Coldplay', frequency: .13},			
-      			{letter:'Drake', frequency: .15},			
-      			{letter:'Eminem', frequency: .78},			
-      			{letter:'Florida', frequency: .13},			
-      			{letter:'Gorillaz', frequency: .56},			
-      			{letter:'Hozier', frequency: .52},			
-      			{letter:'Incubus', frequency: .98},			
-      			{letter:'Journey', frequency: .32},			
-      			{letter:'Kuday', frequency: .51},			
-      			{letter:'Linkin Park', frequency: .35},			
-      			{letter:'Muse', frequency: .77}*/			
-      ],
+      data2 : [],
       data3 : [
       		{date:'30-May-12', close: 23.33},			
   			{date:'23-May-12', close: 23.12},		
@@ -58,6 +44,22 @@ export default{
       ]
     }
   },
+  mounted:function(){
+    console.log('grafico2.vue');
+    // GET /someUrl
+    this.$http.get('http://localhost:2323/backend-tbd/artistas')
+    .then(response=>{
+       // get body data
+      this.data2 = response.body;
+      this.loadGraph(this.data2);
+     console.log('data2',this.data2)
+    }, response=>{
+       // error callback
+       console.log('error cargando lista');
+    })
+   
+    
+  },
   methods:{
     loadGraph:function(data){
 
@@ -76,7 +78,7 @@ export default{
 
 		  x.domain(data.map(function(d) { return d.nombre; }));
 		  //y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-		  y.comentariosPositivos; // eje y en rangos de 0% hasta el 100%
+		  y.domain([0, 1]); // eje y en rangos de 0% hasta el 100%
 
 		  g.append("g")
 		      .attr("class", "axis axis--x")
@@ -104,22 +106,7 @@ export default{
 		
     }
 
-  },
-  mounted:function(){
-    console.log('grafico2.vue');
-    // GET /someUrl
-    this.$http.get('http://localhost:2323/backend-tbd/artistas')
-    .then(response=>{
-       // get body data
-      this.data2 = response.body;
-     console.log('data2',this.data2)
-    }, response=>{
-       // error callback
-       console.log('error cargando lista');
-    })
-   
-    this.loadGraph(this.data2);
-  }	
+  }
 }
 </script>
 <style> 
