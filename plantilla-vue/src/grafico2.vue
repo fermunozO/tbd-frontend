@@ -51,7 +51,7 @@ export default{
     .then(response=>{
        // get body data
       this.data2 = response.body;
-      this.loadGraph(this.data2);
+      this.loadGraph(this.data2);	
      console.log('data2',this.data2)
     }, response=>{
        // error callback
@@ -77,8 +77,8 @@ export default{
 		
 
 		  x.domain(data.map(function(d) { return d.nombre; }));
-		  //y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-		  y.domain([0, 1]); // eje y en rangos de 0% hasta el 100%
+		  y.domain([0, d3.max(data, function(d) { return d.comentariosPositivos; })]);
+		  //y.domain([0, 1]); // eje y en rangos de 0% hasta el 100%
 
 		  g.append("g")
 		      .attr("class", "axis axis--x")
@@ -87,7 +87,7 @@ export default{
 
 		  g.append("g")
 		      .attr("class", "axis axis--y")
-		      .call(d3.axisLeft(y).ticks(10, "%")) // ticks indica la cantidad de indices del eje y
+		      .call(d3.axisLeft(y).ticks(10)) // ticks indica la cantidad de indices del eje y
 		    .append("text")
 		      .attr("transform", "rotate(-90)")
 		      .attr("y", 6)
