@@ -1,19 +1,18 @@
 <template>	
+ 	<!-- este grafico corresponde a los comentarios negativos de los artistas -->
 
 
-<div class="w3-container w3-center" id="grafico2">
-	<h1> Artistas con valoraciones positivas</h1>
-		<svg width="960" height="500"></svg>
-
-
+<div class="w3-container w3-center"  id="grafico3">
+	<h1> Artistas con valoraciones negativas</h1>
+	<svg width="960" height="500"></svg>
 
 
 </div>
 
-
 	
 </template>
 <script>
+
 import * as d3 from 'd3';
 export default{
   data: function(){
@@ -39,8 +38,8 @@ export default{
   },
   methods:{
     loadGraph:function(data){
-    	var valor= d3.select("#grafico2");
-      	var svg = valor.select("svg"),
+    	var value= d3.select("#grafico3");
+      	var svg = value.select("svg"),
 		    margin = {top: 10, right: 90, bottom: 100, left: 140},
 		    width = +svg.attr("width") - margin.left - margin.right,
 		    height = +svg.attr("height") - margin.top - margin.bottom;
@@ -54,7 +53,7 @@ export default{
 		
 
 		  x.domain(data.map(function(d) { return d.nombre; }));
-		  y.domain([0, d3.max(data, function(d) { return d.comentariosPositivos; })]);
+		  y.domain([0, d3.max(data, function(d) { return d.comentariosNegativos; })]);
 		  //y.domain([0, 1]); // eje y en rangos de 0% hasta el 100%
 
 		  g.append("g")
@@ -77,9 +76,9 @@ export default{
 		    .enter().append("rect")
 		      .attr("class", "bar")
 		      .attr("x", function(d) { return x(d.nombre); })
-		      .attr("y", function(d) { return y(d.comentariosPositivos); })
+		      .attr("y", function(d) { return y(d.comentariosNegativos); })
 		      .attr("width", x.bandwidth())
-		      .attr("height", function(d) { return height + - y(d.comentariosPositivos); });
+		      .attr("height", function(d) { return height + - y(d.comentariosNegativos); });
 		
     }
 
@@ -92,7 +91,7 @@ export default{
 	  background-color: forestgreen;
 	  text-align: right;
 	  padding: 3px;
-	  margin: 30px;
+	  margin: 1px;
 	  color: white;
 	}
 
@@ -112,7 +111,7 @@ export default{
 	}
 
 	.bar:hover {
-	  fill: forestgreen;
+	  fill: firebrick;
 	}
 
 	.axis--x path {
@@ -120,14 +119,14 @@ export default{
 	}
 
 	.line {
-	  fill: forestgreen;
+	  fill: none;
 	  stroke: forestgreen;
-	  stroke-width: 2px;
+	  stroke-width: 0.1px;
 	}
 
 	.grid line {
 	  stroke: lightgrey;
-	  stroke-opacity: 0.7;
+	  stroke-opacity: 0.2;
 	  shape-rendering: crispEdges;
 	}
 

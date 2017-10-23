@@ -1,19 +1,14 @@
-
 <template>  
 
 
-<div class="w3-container w3-center" id="grafico">
-  <h1> Géneros con valoraciones positivas</h1>
+<div class="w3-container w3-center" id="grafico4">
+  <h1> Géneros con valoraciones negativas</h1>
     <svg width="960" height="500"></svg>
 
-
-
-
 </div>
-
-
   
 </template>
+
 <script>
 import * as d3 from 'd3';
 export default{
@@ -23,7 +18,7 @@ export default{
     }
   },
   mounted:function(){
-    console.log('grafico.vue');
+    console.log('grafico4.vue');
     // GET /someUrl
     this.$http.get('http://localhost:2323/backend-tbd/generos')
 
@@ -41,7 +36,7 @@ export default{
   },
   methods:{
     loadGraph:function(data){
-      var valor= d3.select("#grafico");
+      var valor= d3.select("#grafico4");
         var svg = valor.select("svg"),
         margin = {top: 10, right: 90, bottom: 100, left: 140},
         width = +svg.attr("width") - margin.left - margin.right,
@@ -56,7 +51,7 @@ export default{
     
 
       x.domain(data.map(function(d) { return d.nombre; }));
-      y.domain([0, d3.max(data, function(d) { return d.comentariosPositivos; })]);
+      y.domain([0, d3.max(data, function(d) { return d.comentariosNegativos; })]);
       //y.domain([0, 1]); // eje y en rangos de 0% hasta el 100%
 
       g.append("g")
@@ -79,9 +74,9 @@ export default{
         .enter().append("rect")
           .attr("class", "bar")
           .attr("x", function(d) { return x(d.nombre); })
-          .attr("y", function(d) { return y(d.comentariosPositivos); })
+          .attr("y", function(d) { return y(d.comentariosNegativos); })
           .attr("width", x.bandwidth())
-          .attr("height", function(d) { return height + - y(d.comentariosPositivos); });
+          .attr("height", function(d) { return height + - y(d.comentariosNegativos); });
     
     }
 

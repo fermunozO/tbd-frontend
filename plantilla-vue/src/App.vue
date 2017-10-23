@@ -5,9 +5,8 @@
 </div>
        <div class="w3-sidebar w3-bar-block w3-dark-grey w3-animate-left" style="display:none" id="mySidebar">
         <button class="w3-bar-item w3-button w3-large" v-on:click="close">Close &times;</button>
-        <a href="#/Graphic" class="w3-bar-item w3-button">Top 10 géneros más escuchados</a>
+        <a href="#/BarGraph2" class="w3-bar-item w3-button">Top 10 géneros más escuchados</a>
         <a href="#/BarGraph" class="w3-bar-item w3-button">Top 10 artistas más escuchados</a>
-        <a href="#" class="w3-bar-item w3-button">Link 3</a>
       </div>
 
     <main class="container">
