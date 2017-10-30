@@ -9,6 +9,8 @@ import grafico from './grafico.vue';
 import totalGraph from './totalGraph.vue';
 import totalGraph2 from "./totalGraph2.vue";
 
+window.jQuery = jQuery;
+window.$ = jQuery;
 
 
 import App from './App.vue';
