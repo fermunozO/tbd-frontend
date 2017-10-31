@@ -8,6 +8,7 @@ import addUser from './addUser.vue';
 import grafico from './grafico.vue';
 import totalGraph from './totalGraph.vue';
 import totalGraph2 from "./totalGraph2.vue";
+import nuevoGraph from "./graficoPrueba.vue";
 
 window.jQuery = jQuery;
 window.$ = jQuery;
@@ -21,7 +22,8 @@ const routes = [
   { path:'/actors', component: Actors},
   { path: '/newActor', component: addUser },
   { path: '/BarGraph', component: totalGraph},
-  { path: '/BarGraph2', component: totalGraph2}
+  { path: '/BarGraph2', component: totalGraph2},
+  { path: '/mapa', component: nuevoGraph}
 ]
 
 // Create the router instance and pass the `routes` option
