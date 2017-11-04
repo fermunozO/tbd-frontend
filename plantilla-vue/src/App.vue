@@ -86,7 +86,7 @@
 </template>
 
 <script>
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
+
 document.getElementById("myBtnArtist").click();
 document.getElementById("myBtnGenre").click();
 </script>

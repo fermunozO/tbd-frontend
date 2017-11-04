@@ -10,10 +10,6 @@ import totalGraph from './totalGraph.vue';
 import totalGraph2 from "./totalGraph2.vue";
 import nuevoGraph from "./graficoPrueba.vue";
 
-window.jQuery = jQuery;
-window.$ = jQuery;
-
-
 import App from './App.vue';
 Vue.use(VueRouter);
 Vue.use(VueResource);
